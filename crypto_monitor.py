@@ -64,11 +64,13 @@ total_spent = total_invested+data["Extra_fees"].sum();	# total spent = total_inv
 bonus_earning = data["Bonus"].sum();
 current_earning = data["Current_value_CB"].sum()+data["Current_value_CC"].sum()-bonus_earning;	# current values include bonus earnings. we want to see how much we actually earned from investing
 current_revenue = current_earning + withdrawn - total_spent;
+Rev_with_bonus = bonus_earning + current_revenue;
 
 stats.loc[0, "total_invested"] = total_invested;
 stats.loc[0, "total_spent"] = total_spent;
 stats.loc[0, "bonus_earning"] = bonus_earning;
 stats.loc[0, "current_earning"] = current_earning;
 stats.loc[0, "current_revenue"] = current_revenue;
+stats.loc[0, "Rev_with_bonus"] = Rev_with_bonus;
 
 stats.to_csv(stats_file, index=False);
